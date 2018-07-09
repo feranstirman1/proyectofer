@@ -139,12 +139,29 @@ public class Player extends GameObject {
             if(tempObject.getId()== ID.Dragon){
                 
                 if(getBounds().intersects(tempObject.getBounds())){
-                    System.out.println("BATALLA FINAL");
-                    //meter metodo para iniciar la batalla final
+                    if(game.isBossDefeated()){
+                        //puede pasar
+                    }else{
+                        System.out.println("batalla final");
+                        //meter funcion para batalla final
+                        x+=velX*-1;
+                        y+=velY*-1;
+                    }
                 }
                 
             }
             
+            if(tempObject.getId()== ID.Trophy){
+                
+                if(getBounds().intersects(tempObject.getBounds())){
+                    if(game.isBossDefeated()){
+                        //puede pasar
+                        game.setIsRunning(false);
+                        System.out.println("HA GANADO");
+                    }
+                }
+                
+            }
             
         }
         

@@ -12,7 +12,8 @@ public enum ID {
     Dragon(),
     Store(),
     Portal(),
-    Arena();
+    Arena(),
+    Trophy();
     
     
 }

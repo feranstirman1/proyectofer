@@ -31,10 +31,11 @@ public class Game extends Canvas implements Runnable{
     private BufferedImage ss_textures=null;
     private BufferedImage floor=null;
     
-    private boolean levelPassed1=true;
-    private boolean levelPassed2=true;
-    private boolean levelPassed3=true;
+    private boolean levelPassed1=false;
+    private boolean levelPassed2=false;
+    private boolean levelPassed3=false;
     private boolean levelPassed4=false;
+    private boolean bossDefeated=false;
     
     public Game(){
         
@@ -202,6 +203,10 @@ public class Game extends Canvas implements Runnable{
                     handler.addObject(new Dragon(xx*64, yy*64, ID.Dragon, ssTextures));
                 }
                 
+                if(blue==0 && red==219 && green==150){
+                    handler.addObject(new Trophy(xx*64,yy*64,ID.Trophy,ssTextures));
+                }
+                
             }
         }
         
@@ -224,6 +229,22 @@ public class Game extends Canvas implements Runnable{
     }
     
     /////////////////////////////GETTERS Y SETTERS///////////////////////////////////////////////////
+
+    public boolean isIsRunning() {
+        return isRunning;
+    }
+
+    public void setIsRunning(boolean isRunning) {
+        this.isRunning = isRunning;
+    }
+
+    public boolean isBossDefeated() {
+        return bossDefeated;
+    }
+
+    public void setBossDefeated(boolean bossDefeated) {
+        this.bossDefeated = bossDefeated;
+    }
 
     
 
