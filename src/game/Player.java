@@ -14,6 +14,7 @@ public class Player extends GameObject {
 
     
     Handler handler;
+    Game game;
     
     //////////////////////////////// ANIMACIONES /////////////////////////////////////////////////////
     
@@ -32,9 +33,10 @@ public class Player extends GameObject {
    /////////////////////////////////////////////////////////////////////////////////////////////////////// 
     
     
-    public Player(int x, int y, ID id,Handler handler,SpriteSheet ss) {
+    public Player(int x, int y, ID id,Handler handler,SpriteSheet ss,Game game) {
         super(x, y, id,ss);
         this.handler=handler;
+        this.game=game;
         
         for(int i=0;i<=8;i++){
             player_down[i]= ss.grabImage(i, 10, 64, 64);
@@ -102,6 +104,28 @@ public class Player extends GameObject {
                 }
                 
             }
+            
+            if(tempObject.getId()== ID.Store){
+                
+                if(getBounds().intersects(tempObject.getBounds())){
+                    x+=velX*-1;
+                    y+=velY*-1;
+                    System.out.println("Se ha ingresado a la tienda!");
+                }
+                
+            }
+            
+            if(tempObject.getId()== ID.Arena){
+                
+                if(getBounds().intersects(tempObject.getBounds())){
+                    //FUNCION PARA ENTRAR EN BATALLA
+                    System.out.println("buscando enemigos");
+                }
+                
+            }
+            
+            
+            
             
         }
         

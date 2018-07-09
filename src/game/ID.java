@@ -9,7 +9,10 @@ public enum ID {
     
     Player(),
     Building(),
-    NPC();
+    NPC(),
+    Store(),
+    Portal(),
+    Arena();
     
     
 }

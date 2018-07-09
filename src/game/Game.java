@@ -26,19 +26,28 @@ public class Game extends Canvas implements Runnable{
     private SpriteSheet ssTextures;
     
     private BufferedImage level=null;
+    
     private BufferedImage ss_player=null;
     private BufferedImage ss_textures=null;
     private BufferedImage floor=null;
     
+    private boolean levelPassed1=false;
+    private boolean levelPassed2=false;
+    private boolean levelPassed3=false;
+    private boolean levelPassed4=false;
     
     public Game(){
+        
         handler= new Handler();
         camera= new Camera(0,0);
         
         this.addKeyListener(new KeyInput(this.handler));
         
         BufferedImageLoader loader= new BufferedImageLoader();
+        
         level= loader.loadImage("/res/MUNDO1.png");
+        
+        
         ss_player= loader.loadImage("/res/player.png");
         ss_textures= loader.loadImage("/res/textures.png");
         
@@ -108,6 +117,9 @@ public class Game extends Canvas implements Runnable{
         }
         
         handler.tick();
+        
+        
+        
     }
     
     public void render(){
@@ -154,18 +166,90 @@ public class Game extends Canvas implements Runnable{
                 int green= (pixel >>8)&0xff;
                 int blue= (pixel)&0xff;
                 
-                if(red==255){
+                if(red==255 && green==0 && blue==0){
                     handler.addObject(new Block(xx*64,yy*64,ID.Building,ssTextures));
                 }
                 
-                if(blue==255){
-                    handler.addObject(new Player(xx*64,yy*64,ID.Player,handler,ssPlayer));
+                if(blue==255 && red==0 && green==0){
+                    //handler.addObject(new Player(xx*64,yy*64,ID.Player,handler,ssPlayer,this));
+                }
+                
+                if(blue==0 && red==0 && green==255){
+                    handler.addObject(new Water(xx*64,yy*64,ID.Building,ssTextures));
+                }
+                
+                if(blue==255 && red==255 && green==0){
+                    handler.addObject(new Sand(xx*64,yy*64,ID.Arena,ssTextures));
+                }
+                
+                if(blue==255 && red==255 && green==255){
+                    handler.addObject(new Store(xx*64,yy*64,ID.Store,ssTextures));
+                }
+                
+                if(blue==0 && red==255 && green==255){
+                    handler.addObject(new Portal(xx*64,yy*64,ID.Portal,ssTextures));
+                }
+                
+                if(blue==0 && red==0 && green==0){
+                    handler.addObject(new Lava(xx*64,yy*64,ID.Building,ssTextures));
                 }
                 
             }
         }
+        
+        //RENDERIZA AL JUGADOR DE ULTIMO PARA QUE QUEDE ENCIMA DE TODO
+        for(int xx=0;xx<w;xx++){
+            for(int yy=0;yy<h;yy++){
+                int pixel= image.getRGB(xx, yy);
+                int red= (pixel >>16)&0xff;
+                int green= (pixel >>8)&0xff;
+                int blue= (pixel)&0xff;
+                
+                if(blue==255 && red==0 && green==0){
+                    handler.addObject(new Player(xx*64,yy*64,ID.Player,handler,ssPlayer,this));
+                }
+                
+            }
+        }
+        
+        
     }
     
+    /////////////////////////////GETTERS Y SETTERS///////////////////////////////////////////////////
+
+    
+
+    public boolean isLevelPassed1() {
+        return levelPassed1;
+    }
+
+    public void setLevelPassed1(boolean levelPassed1) {
+        this.levelPassed1 = levelPassed1;
+    }
+
+    public boolean isLevelPassed2() {
+        return levelPassed2;
+    }
+
+    public void setLevelPassed2(boolean levelPassed2) {
+        this.levelPassed2 = levelPassed2;
+    }
+
+    public boolean isLevelPassed3() {
+        return levelPassed3;
+    }
+
+    public void setLevelPassed3(boolean levelPassed3) {
+        this.levelPassed3 = levelPassed3;
+    }
+
+    public boolean isLevelPassed4() {
+        return levelPassed4;
+    }
+
+    public void setLevelPassed4(boolean levelPassed4) {
+        this.levelPassed4 = levelPassed4;
+    }
     
     
     
