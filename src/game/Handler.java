@@ -14,8 +14,33 @@ public class Handler {
     
     private boolean up=false,right=false,down=false,left=false;
     
+    private boolean menuShown;
+    private int flag=-1;
+    
     /////////////////////////////////////GETTERS Y SETTERS/////////////////////////////////////////////////////////////
 
+    public int getFlag() {
+        return flag;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    
+    
+    public boolean isMenuShown() {
+        return menuShown;
+    }
+
+    public void setMenuShown(boolean menuShown) {
+        this.menuShown = menuShown;
+    }
+
+    
+    
+    
+    
     public LinkedList<GameObject> getObject() {
         return object;
     }
@@ -61,6 +86,11 @@ public class Handler {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     public void tick(){
+        
+        if(flag==1 && menuShown==true){
+            //CODIGO PARA EL MENU JAVI
+            flag=-1;
+        }
         
         for(int i=0;i<object.size();i++){
             object.get(i).tick();

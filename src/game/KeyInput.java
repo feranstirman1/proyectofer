@@ -33,6 +33,15 @@ public class KeyInput extends KeyAdapter{
             
         }
         
+        if(key== KeyEvent.VK_P){
+            if(!handler.isMenuShown()){
+                handler.setMenuShown(true);
+            }else{
+                handler.setMenuShown(false);
+            }
+            handler.setFlag(-1);
+        }
+        
     }
     
     public void keyReleased(KeyEvent e){
@@ -50,6 +59,12 @@ public class KeyInput extends KeyAdapter{
             }
             
         }
+        
+        if(key==KeyEvent.VK_P){
+            handler.setFlag(1);
+        }
+        
+        
         
     }
     
