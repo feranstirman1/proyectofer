@@ -31,9 +31,9 @@ public class Game extends Canvas implements Runnable{
     private BufferedImage ss_textures=null;
     private BufferedImage floor=null;
     
-    private boolean levelPassed1=false;
-    private boolean levelPassed2=false;
-    private boolean levelPassed3=false;
+    private boolean levelPassed1=true;
+    private boolean levelPassed2=true;
+    private boolean levelPassed3=true;
     private boolean levelPassed4=false;
     
     public Game(){
@@ -192,6 +192,14 @@ public class Game extends Canvas implements Runnable{
                 
                 if(blue==0 && red==0 && green==0){
                     handler.addObject(new Lava(xx*64,yy*64,ID.Building,ssTextures));
+                }
+                
+                if(blue==255 && red==0 && green==255){
+                    handler.addObject(new Casa(xx*64,yy*64,ID.Building,ssTextures));
+                }
+                
+                if(blue==124 && red==186 && green==0){
+                    handler.addObject(new Dragon(xx*64, yy*64, ID.Dragon, ssTextures));
                 }
                 
             }

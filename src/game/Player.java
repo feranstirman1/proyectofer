@@ -124,7 +124,26 @@ public class Player extends GameObject {
                 
             }
             
+            if(tempObject.getId()== ID.Portal){
+                
+                if(!game.isLevelPassed1() && !game.isLevelPassed2() && !game.isLevelPassed3() ){
+                
+                if(getBounds().intersects(tempObject.getBounds())){
+                    x+=velX*-1;
+                    y+=velY*-1;
+                    System.out.println("No ha pasado todos los niveles aun");
+                }}
+                
+            }
             
+            if(tempObject.getId()== ID.Dragon){
+                
+                if(getBounds().intersects(tempObject.getBounds())){
+                    System.out.println("BATALLA FINAL");
+                    //meter metodo para iniciar la batalla final
+                }
+                
+            }
             
             
         }
