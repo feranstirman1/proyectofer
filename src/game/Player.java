@@ -118,8 +118,12 @@ public class Player extends GameObject {
             if(tempObject.getId()== ID.Arena){
                 
                 if(getBounds().intersects(tempObject.getBounds())){
+                    
+                    if(velX==0 && velY==0){
+                        //NO PASA NADA
+                    }else{
                     //FUNCION PARA ENTRAR EN BATALLA
-                    System.out.println("buscando enemigos");
+                    System.out.println("buscando enemigos");}
                 }
                 
             }
